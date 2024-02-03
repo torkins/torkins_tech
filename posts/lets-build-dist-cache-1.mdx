@@ -1,0 +1,59 @@
+---
+title: Let's Build A Distributed Cache 
+description: "The first installment of the Let's Build series - a distributed key-value cache"
+date: Jan 6 2024 
+---
+
+This will be the first in my project to build a wide variety of common distributed infrastructure platforms, 
+more or less from scratch, and explore what is needed to make them scale to small, large, super large, crazy large, and 
+[web-scale](https://www.youtube.com/watch?v=b2F-DItXtZs).
+
+# Problem Statement
+
+We want to build a distributed key-value cache which can serve as the backing cache for a large
+number of upstream clients, e.g. a cluster of application services. A Key-value cache meaning given a key, 
+we return a value. For simplicity, let's start with the idea that the key and value are both strings. Therefore we simply need a service which supports the
+following APIs:
+
+`POST /<key>` with a body containing the value
+
+`GET /<key>` returns the value stored by the above call or 404
+
+## Non-Functional Priorities
+
+1) **FAST** - the primary feature for the service is to return responses 
+for both reads and writes extremely fast  
+2) **Highly Available** - the service should be highly available. Ultimately a cache is
+technically optional, however in practice a cache going down can result in cascading
+problems that bring down the authoritative system. Therefore availability is a top concern.  
+3) **Highly Scalable** - the service should support the ability to scale up to a very large
+number of clients as mentioned in the problem statement. It should also scale up
+to a large number of keys.. how large? TBD.
+
+## Non-Functional Tradeoffs
+1) **Consistency** - the service should be somewhat consistent, but not at the expense of speed. 
+As a result it will not be *strongly* consistent, meaning it will be possible for a PUT
+followed by a GET to return the old value of a key.  
+2) **Durability** - Similar to the consistency issue, there are failure modes
+where data may be lost when unreplicated data exists in a cache and the node
+fails.
+
+# Single Node Architecture
+//single process that serves as cache
+//periodic flush-to-disk for durability
+//Questions to answer
+// what makes it fast?
+//  - in-memory caching
+//  - write-back policy reduces write latency
+// what makes it available? 
+// what makes it scalable?
+// how fast is it, how does that change 
+// for different levels of request scale?
+
+// what is the limiting factor for concurrent request scale?
+// what is the limiting factor for key scale?
+// what is the limiting factor for single-request speed?
+    // how does that change for multiple requests?
+// how much does this cost?
+
+
