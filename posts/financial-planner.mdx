@@ -1,0 +1,49 @@
+---
+title: Financial Planner
+description: "A system to project finances, layering different accounts, constraints and strategies"
+date: Feb 3 2024
+tags: golang, finance, projects 
+---
+
+# Overview
+
+I've always planned my finances in a spreadsheet, which works extremely awesomely (because spreadsheets rule) 
+until it doesn't, and it becomes unworkable to update and 'branch' with different options.  I've done lots of
+fits and starts and making a software package to do the same and this is the next one.
+
+# Primary Functionality
+My spreadsheet normally works like this:
+
+First column is a running month/year column, with a row for each month. Each subsequent column has running totals for these months
+
+## Net Worth
+A section of columns for net worth.. total net worth, then broken down by (Property, Liquid, Retirement, Debt)
+
+## Income
+
+A section of columns for income, my takehome, my wife's takehome, and other income rolled up
+
+## Spend allocation
+A break down of how that takehome gets allocated:
+
+1. A configured 'discretionary' spend - this is basically a lump value for month budget not including 'non-discretionary' spend, i.e. debt servicing, required mortgage payments, etc
+2. A total 'non-discretionary' spend - this is the sum of all the non-discretionary spend, which is broken down in other sections
+
+## Surplus allocation  
+A breakdown of surplus allocation according to some strategy I have encoded, for example I've had schemes such as:
+
+    Prioritize paying off my HELOC (variable APR) up to some maximum amount per month, then put everything in taxable brokerage 
+    Prioritize paying into my 529 for 6 months, then back to paying off HELOC, then put everything into taxable brokerage from then on
+
+## 
+TODO Scenarios of times I have used my spreadsheets
+
+TODO What I wish I could have done easier
+
+# Secondary Functionality
+asdasd
+
+# Thoughts
+asdasd
+
+# Model Architecture
