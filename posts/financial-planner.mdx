@@ -32,8 +32,8 @@ A break down of how that takehome gets allocated:
 ## Surplus allocation  
 A breakdown of surplus allocation according to some strategy I have encoded, for example I've had schemes such as:
 
-    Prioritize paying off my HELOC (variable APR) up to some maximum amount per month, then put everything in taxable brokerage 
-    Prioritize paying into my 529 for 6 months, then back to paying off HELOC, then put everything into taxable brokerage from then on
+    - Prioritize paying off my HELOC (variable APR) up to some maximum amount per month, then put everything in taxable brokerage 
+    - Prioritize paying into my 529 for 6 months, then back to paying off HELOC, then put everything into taxable brokerage from then on
 
 ## Example Scenarios
 Here are some scenarios I have used this for
@@ -103,8 +103,9 @@ to be paid off when the asset is liquidated
 ## Allocate Excess Spend
 TODO How??
 Ideas..
+
 ### Idea 1
-"SpendAllocationConfig" - list of { account, constraints } in order of priority?
+"SpendAllocationConfig" - list of &#123; account, constraints &#125; in order of priority?
 
 constraints are like MaxAmount, MinAmount, for network
 
