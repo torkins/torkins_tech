@@ -11,7 +11,7 @@ I've always planned my finances in a spreadsheet, which works extremely awesomel
 until it doesn't, and it becomes unworkable to update and 'branch' with different options.  I've done lots of
 fits and starts and making a software package to do the same and this is the next one.
 
-# Primary Functionality
+# What the software should do 
 My spreadsheet normally works like this:
 
 First column is a running month/year column, with a row for each month. Each subsequent column has running totals for these months
@@ -35,15 +35,95 @@ A breakdown of surplus allocation according to some strategy I have encoded, for
     Prioritize paying off my HELOC (variable APR) up to some maximum amount per month, then put everything in taxable brokerage 
     Prioritize paying into my 529 for 6 months, then back to paying off HELOC, then put everything into taxable brokerage from then on
 
-## 
-TODO Scenarios of times I have used my spreadsheets
+## Example Scenarios
+Here are some scenarios I have used this for
+- Simple check in on whether our family budget is going to lead us to our goals
+- Consider big financial decisions such as job changes, 429 investments, decide on things like prepaying a mortgage vs investing in a taxable account, how much to put in tax deferred retirement accounts
+- Using net worth at target dates along with target retirement dates and target retirement spend to see how things go
 
-TODO What I wish I could have done easier
+## What didn't work well
+- Adding new accounts - e.g. what if we bought a second property
+- Visibility into where the money was going without reading and holding all formulas in your head
+- Debugging errors
+- Explaining the results to my wife
+- No modeling of taxes, makes that hard to compare
+- Inflation sort of washed out, not sure that is valid
 
-# Secondary Functionality
-asdasd
+
+# So here's what I want 
+A projection system that lets me configured my current accounts, mortgages, investments, etc, then projects network at different times in the future.  I want to be able to make different projections where one is a copy of the other but with some changes, and see the different outcomes easily (graphically)
+
+# User-Facing Conceptual Model
+
+## Accounts
+
+### Income Accounts
+- Represents different sources of income
+
+#### Named Monthly Income
+- Have a set amount
+- Start and stop on different days,
+- Have a growth function
+    - constant rate 
+    - based on a defined time curve (later functionality)
+
+### Spend Accounts
+- Represent accounts of spending such as discretionary budgets, mortgages,
+current lines of credit 
+
+#### Named Monthly Spend
+- Have a set amount
+- Start and stop on different days,
+- Have a growth function
+    - constant rate 
+    - based on a defined time curve (later functionality)
+
+### Asset Accounts
+- Values contribute positively to Net Worth
+- May appreciate or not
+
+### Liability Accounts
+- All liability account balances count negative to Net Worth
+- Can have a Lien on an Asset
+
+#### Lien
+- A lien is an attachment of a liability to an asset that requires the liability
+to be paid off when the asset is liquidated
+
+#### Mortgage
+- Debt Balance
+- Interest Rate 
+
+# Game Loop
+
+## Generate Income 
+
+## Generate Spend
+
+## Allocate Excess Spend
+TODO How??
+Ideas..
+### Idea 1
+"SpendAllocationConfig" - list of { account, constraints } in order of priority?
+
+constraints are like MaxAmount, MinAmount, for network
+
+Allocate min amounts first, by order priority, then allocate to accounts in order of list, respecting max amount
+
+
+
+
 
 # Thoughts
-asdasd
+
+Both asset accounts and liability accounts can be drawable, e.g.
+- A HELOC can be drawn on
+- A Checking/brokerage account
+
+
+
+
+
+
 
 # Model Architecture
